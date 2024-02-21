@@ -1,25 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import home from './components/home';
-import services from './components/services';
-import blogs from './components/blogs.js';
-import contact from './components/contact';
+import Home from './components/home';
+import Services from './components/services';
+import Blogs from './components/blogs.js';
+import Parent from './components/parent.js';
 
-function Home(){
+export default function App(){
     return(
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<home />} />
-          <Route path="/services" element={<services />} />
-          <Route path="/blogs" element={<blogs />} />
-          <Route path="/contact" element={<contact />} />
+          <Route path="/" element={<Parent />} >
+          <Route path="/home" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/blogs" element={<Blogs />} />
+          </Route>
         </Routes>
       </BrowserRouter>
-    )
+    );
 }
 
 
