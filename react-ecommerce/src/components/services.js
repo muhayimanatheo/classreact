@@ -1,12 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 //import { Link } from "react-router-dom";
 function ServicesFunc() {
-    return (
-        <div>
-            <h1>This services</h1>
-        </div>
+     const [color, setColor] = useState('red');
+     const [name, setFirstName] = useState('');
 
-    );
+  // Function to handle color change
+  const handleColorChange = (newColor) => {
+    setColor(newColor);
+  };
+
+  return (
+    <div>
+      <p className={`text-${color}-500`}>This Color is going to be changed {color}.</p>
+      <button onClick={() => handleColorChange('blue')}>Change Color</button>
+      <p>My Name is {name}</p>
+            <label >FullNames:</label><br/>
+            <input type="text" value={name} name="name" onChange={e => setFirstName(e.target.value)} className="border-2"/>
+    </div>
+  );
 }
-
 export default ServicesFunc;
