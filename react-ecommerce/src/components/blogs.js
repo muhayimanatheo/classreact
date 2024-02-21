@@ -1,5 +1,12 @@
-const Blogs = () =>{
-    return <h1>This Blogs</h1>
-};
+import React from "react";
+//import { Link } from "react-router-dom";
+function BlogFunc() {
+    return (
+        <div>
+            <h1>This Blogs</h1>
+        </div>
 
-export default Blogs;
+    );
+}
+
+export default BlogFunc;
