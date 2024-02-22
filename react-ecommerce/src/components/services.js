@@ -11,8 +11,8 @@ function ServicesFunc() {
 
   return (
     <div>
-      <p className={`text-${color}-500`}>This Color is going to be changed {color}.</p>
-      <button onClick={() => handleColorChange('blue')}>Change Color</button>
+      <p className={`text-${color}-800`}>This Color is going to be changed {color}.</p>
+      <button onClick={() => handleColorChange('yellow')}>Change Color</button>
       <p>My Name is {name}</p>
             <label >FullNames:</label><br/>
             <input type="text" value={name} name="name" onChange={e => setFirstName(e.target.value)} className="border-2"/>
