@@ -1,6 +1,41 @@
-import React from 'react';
+import React,{useState} from 'react';
 import logo from '../images/customer.jpeg';
+
 function Contacts (){
+         
+    //
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        phone: '',
+        address: '',
+        message: ''
+    });
+
+    // Event handler to update form data
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            prevState,
+            [name]: value
+        }));
+    };
+
+    // Function to handle form submission
+    const handleSubmit = () => {
+        // Convert form data to JSON format
+        const jsonData = [
+            {
+                fullName: formData.fullName,
+                email: formData.email,
+                phone: formData.phone,
+                address: formData.address,
+                message: formData.message
+            }
+        ];
+        console.log(jsonData); // You can send this data to an API or perform other actions
+    };
+    
     const productData = [
         {
             id: 1,
@@ -20,7 +55,7 @@ function Contacts (){
                     {productData.map((data, index)=>(
                         <div key={index} className=''>
                             <div className=''>
-                                <img src={data.photo} alt="" className='w-full' />
+                                <img src={data.photo} alt="" className='w-full p-2' />
                                 </div>
                                 <h1 className='text-black font-semi-bold  mx-8'>{data.name}</h1>
                                 <h1 className='text-black font-semi-bold  mx-8'>{data.title}</h1>
@@ -32,51 +67,72 @@ function Contacts (){
                 </div>
             </div>
             <div>
-                <h1 className="text-white mx-6">Hello!!<br/>Contact us for support we are here for you</h1>
-                <div className=''>
-                     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                          <div class="mb-4">
-                             <label class="block text-gray-700 text-sm font-bold mb-2" for="fullname">Full Name</label>
-                                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fullname" type="text" placeholder="Full Name"/>
-                          </div>
-                          <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-                    Email
-                </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email"/>
-            </div>
-
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-                    Phone
-                </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="Phone"/>
-            </div>
-
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="address">
-                    Address
-                </label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" type="text" placeholder="Address"/>
-            </div>
-
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="message">
-                    Message
-                </label>
-                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" placeholder="Message"></textarea>
-            </div>
-
-            <div class="flex items-center justify-between">
-                <button class="bg-[#eab308] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline object-center" type="button">
-                    Submit
-                </button>
-            </div>
-                     </form>
+            <h1 className="text-white mx-6">Hello!!<br />Contact us for support we are here for you</h1>
+            <form 
+                        onClick={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div className="grid grid-cols-span-2">
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fullName">Full Name</label>
+                        <input
+                            className="border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline"
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Full Name"
+                            value={formData.fullName}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
+                        <input
+                            className="border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline"
+                            type="text"
+                            name="email"
+                            placeholder="Enter your email address"
+                            value={formData.email}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">Phone</label>
+                        <input
+                            className="border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline"
+                            type="text"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            value={formData.phone}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">Location</label>
+                        <input
+                            className="border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline"
+                            type="text"
+                            name="address"
+                            placeholder="Enter your Adress"
+                            value={formData.address}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">Messages</label>
+                        <textarea type="text" className=" border rounded w-full py-2 px-3" 
+                        placeholder="Message" name="message" value={formData.message} onChange={handleChange}></textarea>
+                    </div>
                 </div>
-            </div>
+                <div className="flex items-center justify-between">
+                    <button
+                        className="bg-[#eab308] text-white font-bold py-2 px-4 rounded-full m"
+                        type="submit"
+                    >
+                        Submit
+                    </button>
+                </div>
+            </form>
         </div>
-        
+            </div>        
     </>
     );
 }
