@@ -20,7 +20,7 @@ function Contacts (){
             "email":email,
             "phone":phone,
             "address":address,
-            "message":message
+            "message":message,
          })
         .then(function(response) {
              console.log(response);
@@ -81,7 +81,7 @@ function Contacts (){
     <form onSubmit={(e)=>handleSubmit(e)} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fullName">Full Name</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
           <input
             className="border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline"
             type="text"
@@ -93,7 +93,7 @@ function Contacts (){
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">Email</label>
           <input
             className="border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline"
             type="text"
@@ -104,7 +104,7 @@ function Contacts (){
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">Phone</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">Phone</label>
           <input
             className="border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline"
             type="text"
@@ -115,7 +115,7 @@ function Contacts (){
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">Location</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">Location</label>
           <input
             className="border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline"
             type="text"
@@ -127,12 +127,12 @@ function Contacts (){
         </div>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">Messages</label>
+        <label className="block text-gray-700 text-sm font-bold mb-2">Messages</label>
         <textarea type="text" className="border rounded w-full py-2 px-3" 
           placeholder="Message" name="message" value={message} onChange={(e)=> setMessage(e.target.value)}></textarea>
       </div>
       <div className="flex items-center place-content-center">
-        <button className="bg-[#eab308] text-white font-bold py-2 px-4 rounded-full" type="submit">Submit</button>
+        <button className="bg-[#eab308] text-white font-bold py-2 px-4 rounded-full" type="submit" onClick={()=>handleSubmit}>Submit</button>
       </div>
     </form>
   </div>
@@ -140,6 +140,6 @@ function Contacts (){
 
     </>
     );
-}
+};
 
 export default Contacts;
